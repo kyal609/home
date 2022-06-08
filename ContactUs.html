@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport"content="width=device-width" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            width: 393px;
+            height: 782px;
+            overflow: scroll;
+            background:#B0B0B0;
+        }
+        #view {
+            width:100%;
+            height:100%;
+            margin:5px auto;
+            position:relative;
+            overflow:scroll;
+            background:#B0B0B0;
+        }
+        #inputLayout {
+            width: 100%;
+            height:14%;
+            position:absolute;
+            bottom:1%;
+            display:grid;
+            grid-template-columns:85% 15%;overflow:hidden;
+            box-shadow:-1px 0px 4px black;
+            box-sizing:border-box;padding:5px;
+            background:#A992A8;
+        }
+        #typeMsg{
+            height:45px;
+            width:100%;
+            border-radius:5px;
+            outline:none;
+            border:2px solid #363636;
+            box-sizing:border-box;
+            padding-left:5px;
+            font-size:20px;
+            box-shadow:2px 2px 4px black;
+        }
+        #content{
+             width:100%;
+             height:85%;
+             position:fixed;
+             top:2px; 
+             overflow:scroll;
+             box-sizing:border-box;
+             padding-bottom:5px;
+             background:#B0B0B0;
+             box-sizing:border-box;
+             padding-left:2px;
+        }
+        .msg{
+            max-width:300px;
+            width:fit-content;
+            height:fit-content;
+            background:#6C6C6C;
+            color:white;
+            font-family:Times New Roman;
+            padding:10px;
+            border-radius:2px 5px 2px 5px;
+            margin-top:5px;
+            font-size:20px;
+            box-shadow:3px 3px 4px black;
+            animation-name:animation;
+            animation-duration:1s;
+        }
+        @keyframes animation{
+            from{
+                opacity:0%;
+            }
+            to{
+                opacity:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="view">
+        <div id="content"></div>
+         <div id="inputLayout">
+        <input type="text"id="typeMsg"placeholder="Type Message" onkeypress="keypress()"onmousedown="mouseover()"onmouseout="mouseout()"/>
+    </div>
+    </div>
+   <script type="text/javascript">
+       let typeMsg=document.querySelector("#typeMsg");
+       let content=document.querySelector("#content");
+       function keypress(){
+        let msg =document.createElement("div");
+        msg.className="msg";
+        msg.innerText=typeMsg.value;
+        content.appendChild(msg);
+        typeMsg.value="";
+        content.scrollTop +=120;
+       }
+       function mouseover(){
+           content.style.height="85.1%";
+       }
+       function mouseout(){
+           content.style.height="90%"
+       }
+   </script>
+</body>
+</html>
